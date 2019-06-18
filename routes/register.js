@@ -7,7 +7,7 @@ router.post('/register', (req, res) => {
     get_user({ username }).then(result => {
         if (result) res.json({ error: "username already exists", token: null })
         else {
-            add_user({ username, password }).then(result => {
+            add_user({ username, password }).then(_ => {
                 res.json({
                     error: null,
                     token:jwt.sign({username},require("../secret").json_key)
