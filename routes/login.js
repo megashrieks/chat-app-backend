@@ -15,6 +15,6 @@ router.post('/login', (req, res) => {
             })
 
         })
-        .catch(console.error)
+        .catch(error=>res.json({error,token:null}))
 });
 module.exports = router;
