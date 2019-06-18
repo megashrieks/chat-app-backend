@@ -1,4 +1,4 @@
-module.exports = (socket, on_line_register )=> ({ token }) => {
+module.exports = ({ socket, on_line_register }) => ({ token }) => {
     let { jwt_verify } = require("../utils");
     jwt_verify(token, require("../secret").json_key).then(decoded => {
         on_line_register.user_to_id[decoded.username] = socket.id;
