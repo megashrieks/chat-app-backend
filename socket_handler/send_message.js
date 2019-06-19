@@ -14,15 +14,15 @@ module.exports = ({ socket, on_line_register }) => ({to,message})=>{
     if (receiver) on_line_register.id_to_socket[receiver]
         .emit("message", {
             error: null,
-            message: {
+            messages: [{
                 from: username,
                 message
-            }
+            }]
         })
     else {
         let { send_message } = require("../database");
         send_message({ from: username, to, message }).then(_ => {
-            socket.emit("acknoledgement", { error: null, message: "message send successfully" });
+            socket.emit("acknoledgement", { error: null, message: "message sent successfully" });
         }).catch(error=>socket.emit("error",{error}))
     }
 }
