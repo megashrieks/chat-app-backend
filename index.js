@@ -5,7 +5,8 @@ const PORT = 8080;
 let app = express();
 let server = require("http").Server(app);
 let io = require("socket.io")(server);
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(require('cors')());
 app.use('/', require('./routes/'));
 
