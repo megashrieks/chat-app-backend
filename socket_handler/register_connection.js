@@ -10,8 +10,6 @@ module.exports = ({ socket, on_line_register }) => ({ token }) => {
             .then(result => {
                 socket.emit("message", { error: null, messages: result });
                 result.forEach(({ from, time, message }) => {
-                    //for debugging
-                    console.log(`pending messages sent from ${from} to ${decoded.username} : ${time} -> ${message}`);
                     //TODO: enable this later
                     // delete_message_with_id({ _id })
                     //     .then(() => console.log(`${_id} deleted successfully`))
